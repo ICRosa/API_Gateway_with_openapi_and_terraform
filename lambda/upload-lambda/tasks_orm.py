@@ -38,7 +38,23 @@ class Task(Base):
                 if self.done_on is not None else None
             )
         }
-
+        
+        
+        
+        
+def create_table(event, context):        
+    inspector = sqlalchemy.inspect(engine)
+    try:
+        table_names = inspector.get_table_names()
+    except Exception as e:
+        return f"Error: {e}"
+        
+    if 'tasks' in table_names:
+        return "Table already exists"
+        
+    else:
+        Base.metadata.create_all(bind=engine, checkfirst=True, tables=[Task.__table__])
+        return "Table created successfully"
 
 def add_task(event, context):
 
@@ -62,12 +78,8 @@ def add_task(event, context):
     session.add(task)
 
 
-    # Commits, if there is no table creates it 
-    try:
-        session.commit()
-    except:
-        Base.metadata.create_all(bind=engine, checkfirst=True, tables=[Task.__table__])
-        session.commit()
+    # Commits
+    session.commit()
     
     return {
         'statusCode': 201,

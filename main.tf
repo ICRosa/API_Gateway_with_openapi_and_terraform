@@ -37,7 +37,9 @@ module "lambda" {
       timeout = 80,
       memory_size = 128,
     
-      }
+      },
+    create_table = {}
+
   }
   iam_role_arn = module.iam.iam_role_arn
   pg_host      = module.rds.db_endpoint

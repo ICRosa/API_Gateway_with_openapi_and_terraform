@@ -36,7 +36,10 @@ terraform.rc
 #ignores jupyter files
 *.ipynb
 
-.gitignore
+*.gitignore*
 
 # avoid to upload this large file
-terraform/lambda/SQLalchemy_AWSPsycopg2/python
+lambda/SQLalchemy_AWSPsycopg2/python/
+
+
+.terraform*

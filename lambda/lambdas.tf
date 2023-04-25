@@ -26,6 +26,17 @@ resource "aws_lambda_function" "main" {
 }
 
 
+# Invokes a lambda to create the table
+resource "aws_lambda_invocation" "create_table_invocation" {
+
+  function_name = aws_lambda_function.main["create_table"].function_name
+
+  input = jsonencode({
+    k = "1"
+  })
+}
+
+
 resource "aws_cloudwatch_log_group" "example" {
 
   for_each = var.tasks
