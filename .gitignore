@@ -32,3 +32,14 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+#ignores jupyter files
+*.ipynb
+
+*.gitignore*
+
+# avoid to upload this large file
+lambda/SQLalchemy_AWSPsycopg2/python/
+
+
+.terraform*

@@ -1,0 +1,168 @@
+openapi: 3.0.1
+info:
+  title: To Do API
+  version: 1.0.0
+  description: To do tasks API
+externalDocs:
+  description: API Repository
+  url: rpo
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        task:
+          type: string
+        description:
+          type: string
+        done:
+          type: boolean
+          default: false
+        made_on:
+          type: string
+          format: date-time
+          readOnly: true
+        done_on:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+tags:
+  - name: task
+    description: To do list operations
+paths:
+  /tasks:
+    post:
+      tags:
+        - task
+      summary: Adds a new task
+      operationId: addTask
+      requestBody:
+        description: Task to be added
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+        required: true
+      responses:
+        "201":
+          description: Task added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+      x-amazon-apigateway-integration:
+        uri: ${lambda_addtask_invokearn}
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    get:
+      tags:
+        - task
+      summary: List all tasks
+      operationId: listTask
+      responses:
+        "200":
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Task"
+      x-amazon-apigateway-integration:
+          uri: ${lambda_listtask_invokearn}
+          passthroughBehavior: "when_no_match"
+          httpMethod: "POST"
+          contentHandling: "CONVERT_TO_TEXT"
+          type: "aws_proxy"
+  /tasks/{id}:
+    get:
+      tags:
+        - task
+      summary: Gets a task
+      operationId: getTask
+      parameters:
+        - name: id
+          in: path
+          description: ID of the task
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Task found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "404":
+          description: Task not found
+      x-amazon-apigateway-integration:
+        uri: ${lambda_gettask_invokearn}
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    put:
+      tags:
+        - task
+      summary: Updates a task
+      operationId: editTask
+      parameters:
+        - name: id
+          in: path
+          description: Task ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: Task updates
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Task"
+        required: true
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Task"
+        "404":
+          description: Task not found
+      x-amazon-apigateway-integration:
+        uri: ${lambda_edittask_invokearn}
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
+    delete:
+      tags:
+        - task
+      summary: Deletes a task
+      operationId: deleteTask
+      parameters:
+        - name: id
+          in: path
+          description: ID of the task
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Task successfully deleted
+        "404":
+          description: Task not found
+      x-amazon-apigateway-integration:
+        uri: ${lambda_deletetask_invokearn}
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "aws_proxy"
