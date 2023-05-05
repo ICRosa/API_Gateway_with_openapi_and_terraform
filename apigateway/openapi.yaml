@@ -5,7 +5,7 @@ info:
   description: To do tasks API
 externalDocs:
   description: API Repository
-  url: rpo
+  url: https://github.com/ICRosa/API_Gateway_with_openapi_and_terraform
 
 components:
   schemas:

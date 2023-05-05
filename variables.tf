@@ -1,24 +1,30 @@
 
-variable "pg_port" {
-  description = "PostgreSQL port"
+variable "db_port" {
+  description = "Database port"
   type        = number
   default     = 5432
 }
 
-variable "pg_user" {
-  description = "PostgreSQL user"
+variable "db_user" {
+  description = "Database user"
   type        = string
   default     = "postgres"
 }
 
-variable "pg_pass" {
-  description = "PostgresSQL password"
+variable "db_pass" {
+  description = "Database password"
   type        = string
   default     = "12345678"
 }
 
-variable "pg_dbname" {
-  description = "PostgreSQL database name"
+variable "db_dbname" {
+  description = "Database database name"
+  type        = string
+  default     = "postgres"
+}
+
+variable "db_engine" {
+  description = " database engine"
   type        = string
   default     = "postgres"
 }

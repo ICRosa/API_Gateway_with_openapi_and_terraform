@@ -1,3 +1,4 @@
+# Renders the openapi template file with the vars
 data "template_file" "openapi" {
   template = file("${path.module}/openapi.yaml")
 
@@ -10,6 +11,7 @@ data "template_file" "openapi" {
   }
 }
 
+# Creates the rest API from the rendered tamplate file
 resource "aws_api_gateway_rest_api" "api" {
     name        = "To Do API"
     description = "To do tasks API"
@@ -23,20 +25,20 @@ resource "aws_api_gateway_rest_api" "api" {
     fail_on_warnings = true
 }
 
+# Deploys the API
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = aws_api_gateway_rest_api.api.id  
 }
 
+# Creates an API stage based on terraform workspace name
 resource "aws_api_gateway_stage" "main" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   deployment_id = aws_api_gateway_deployment.deployment.id
 
-  stage_name  = "dev"
-
+  stage_name  = "${terraform.workspace}"
  }
 
-
-
+# Creates the permissions/triggers between the API and the lambdas
 resource "aws_lambda_permission" "permit" {
 
   for_each = var.lambda_names
