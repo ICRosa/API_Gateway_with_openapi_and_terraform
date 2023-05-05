@@ -1,6 +1,6 @@
 <div align="center">
   
-  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ICRosa/API_Gateway_with_openapi_and_terraform?color=purple)
+  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ICRosa/API_Gateway_with_openapi_and_terraform)
   ![GitHub Last Commit](https://img.shields.io/github/last-commit/ICRosa/API_Gateway_with_openapi_and_terraform?color=purple)
   
 </div>
