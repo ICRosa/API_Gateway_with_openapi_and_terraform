@@ -11,7 +11,7 @@ from sqlalchemy.sql import text
 
 
 # Configure the SQLAlchemy engine to connect to the RDS instance
-engine = sqlalchemy.create_engine(os.getenv("PG_DSN"))
+engine = sqlalchemy.create_engine(os.getenv("db_DSN"))
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
@@ -98,7 +98,7 @@ def list_task(event, context):
         return {
         'statusCode': 404,
 
-        'body': "Table not found, make shurre you ran at least one POST operation or created the table externaly"
+        'body': "Table not found"
     }
     body = [task.to_dict() for task in tasks]
 

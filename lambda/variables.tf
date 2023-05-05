@@ -2,23 +2,23 @@ variable "iam_role_arn" {
   type = string
 }
 
-variable "pg_host" {
+variable "db_host" {
   type = string
 }
 
-variable "pg_port" {
+variable "db_port" {
   type = number
 }
 
-variable "pg_user" {
+variable "db_user" {
   type = string
 }
 
-variable "pg_pass" {
+variable "db_pass" {
   type = string
 }
 
-variable "pg_dbname" {
+variable "db_dbname" {
   type = string
 }
 

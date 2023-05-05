@@ -42,11 +42,11 @@ module "lambda" {
 
   }
   iam_role_arn = module.iam.iam_role_arn
-  pg_host      = module.rds.db_endpoint
-  pg_port      = var.pg_port
-  pg_user      = var.pg_user
-  pg_pass      = var.pg_pass
-  pg_dbname    = var.pg_dbname
+  db_host      = module.rds.db_endpoint
+  db_port      = var.db_port
+  db_user      = var.db_user
+  db_pass      = var.db_pass
+  db_dbname    = var.db_dbname
 }
 
 module "apigateway" {
@@ -63,5 +63,12 @@ module "apigateway" {
 
 module "rds" {
   source = "./rds"
+
+  db_port   = var.db_port
+  db_user   = var.db_user
+  db_pass   = var.db_pass
+  db_dbname = var.db_dbname
+  db_engine = var.db_engine
+
 }
 

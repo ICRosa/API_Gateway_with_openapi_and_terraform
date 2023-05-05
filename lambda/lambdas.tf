@@ -17,7 +17,7 @@ resource "aws_lambda_function" "main" {
     layers            = [aws_lambda_layer_version.lambda_layer.arn]
     environment {
       variables = {
-        PG_DSN = "postgresql://${var.pg_user}:${var.pg_pass}@${var.pg_host}/${var.pg_dbname}"
+        db_DSN = "postgresql://${var.db_user}:${var.db_pass}@${var.db_host}/${var.db_dbname}"
       }
     }
     depends_on = [
