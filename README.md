@@ -1,13 +1,19 @@
 <div align="center">
   
-  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ICRosa/API_Gateway_with_openapi_and_terraform)
-  ![GitHub Last Commit](https://img.shields.io/github/last-commit/ICRosa/API_Gateway_with_openapi_and_terraform?color=purple)
+  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ICRosa/API_Gateway_with_openapi_and_terraform?color=orange)
+  ![GitHub Last Commit](https://img.shields.io/github/last-commit/ICRosa/API_Gateway_with_openapi_and_terraform?color=orange)
   
 </div>
 
+<p align="center">
+  <a href="https://icrosa.github.io/API_Gateway_with_openapi_and_terraform/">
+    <img src="./Images/Swagger.png" alt="Check the API with swagger">
+  </a>
+</p>
 
-# ToDo API
-This us an project that uses terraform to place a ToDo list that is managed by an AWS API Gateway integrated with lambdas to make CRUD operations. 
+- [Click to check the API on Swagger UI](https://icrosa.github.io/API_Gateway_with_openapi_and_terraform/)
+
+- This us an project that uses terraform to place a ToDo list that is managed by an AWS API Gateway integrated with lambdas to make CRUD operations. 
 
 <img src="./Images/Diagram.png">
 

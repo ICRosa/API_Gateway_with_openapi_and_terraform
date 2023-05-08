@@ -56,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Task"
+        "400":
+          description: Error while getting 'body' params, make sure you have passed the json formated params
       x-amazon-apigateway-integration:
         uri: ${lambda_addtask_invokearn}
         passthroughBehavior: "when_no_match"
@@ -103,7 +105,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Task"
         "404":
-          description: Task not found
+          description: Task id not found
       x-amazon-apigateway-integration:
         uri: ${lambda_gettask_invokearn}
         passthroughBehavior: "when_no_match"
@@ -136,8 +138,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Task"
+        "400":
+          description: Error while getting 'body' params, make sure you have passed the json formated params
         "404":
-          description: Task not found
+          description: Task id not found
       x-amazon-apigateway-integration:
         uri: ${lambda_edittask_invokearn}
         passthroughBehavior: "when_no_match"
@@ -160,7 +164,7 @@ paths:
         "200":
           description: Task successfully deleted
         "404":
-          description: Task not found
+          description: Task id not found
       x-amazon-apigateway-integration:
         uri: ${lambda_deletetask_invokearn}
         passthroughBehavior: "when_no_match"
