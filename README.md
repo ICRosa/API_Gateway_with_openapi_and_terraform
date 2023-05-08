@@ -7,7 +7,10 @@
 
 
 # ToDo API
-This us an project that uses terraform to place a ToDo list that is managed by an AWS API Gateway integrated with lambdas to make CRUD operations. 
+
+- [access the API with swagger](https://icrosa.github.io/API_Gateway_with_openapi_and_terraform/)
+
+- This us an project that uses terraform to place a ToDo list that is managed by an AWS API Gateway integrated with lambdas to make CRUD operations. 
 
 <img src="./Images/Diagram.png">
 
