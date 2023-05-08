@@ -5,14 +5,13 @@
   
 </div>
 
-
-# ToDo API
-
-<p align="left">
+<p align="center">
   <a href="https://icrosa.github.io/API_Gateway_with_openapi_and_terraform/">
     <img src="./Images/Swagger.png" alt="Check the API with swagger">
   </a>
 </p>
+
+- [Click to check the API on Swagger UI](https://icrosa.github.io/API_Gateway_with_openapi_and_terraform/)
 
 - This us an project that uses terraform to place a ToDo list that is managed by an AWS API Gateway integrated with lambdas to make CRUD operations. 
 
